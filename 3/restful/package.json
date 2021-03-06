@@ -1,0 +1,19 @@
+{
+  "name": "restful",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.6.3",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
+  }
+}
