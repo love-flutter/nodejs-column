@@ -1,4 +1,4 @@
-const url = require('url');
+const URL = require('url').URL;
 
 const baseFun = require('../lib/baseFun');
 
@@ -28,7 +28,8 @@ const routerMapping = {
 module.exports = function () {
     return async function ( ctx, next ) {
         // 获取 get 参数
-        const pathname = url.parse(ctx.request.url).pathname;
+        const myUrl = new URL(ctx.request.url, `http://${ctx.request.headers.host}`); 
+        const pathname = myUrl.pathname;
         
         // 过滤非拉取用户信息请求
         if(!routerMapping[pathname]) {

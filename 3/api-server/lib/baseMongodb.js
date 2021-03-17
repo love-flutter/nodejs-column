@@ -8,7 +8,7 @@ let baseMongodb;
 
 class BaseMongodb {
     constructor() {
-        this.mongoClient = new MongoClient(uri, { useNewUrlParser: true });
+        this.mongoClient = new MongoClient(uri, { useNewUrlParser: true , useUnifiedTopology: true});
         this.mongoClient.connect(err => {
             if(err){
                 console.log('connect db error', err);

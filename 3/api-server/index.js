@@ -1,28 +1,29 @@
 const http = require('http');
-const url = require('url');
-const querystring = require('querystring');
+const URL = require('url').URL;
   
-const baseMongo = require('./lib/baseMongodb')();
 /**
  * 
  * 创建 http 服务，简单返回
  */
 const server = http.createServer(async (req, res) => {
     // 获取 get 参数
-    const pathname = url.parse(req.url).pathname;
-    paramStr = url.parse(req.url).query,
+    const myUrl = new URL(req.url, `http://${req.headers.host}`); 
+    const pathname = myUrl.pathname;
+
+    paramStr = myUrl,
     param = querystring.parse(paramStr);
     // 过滤非拉取用户信息请求
     if('/v1/userinfos' != pathname) {
       return setResInfo(res, false, 'path not found', null, 404);
     }
+    const user_ids = myUrl.searchParams.get('user_ids')
     // 参数校验，没有包含参数时返回错误
-    if(!param || !param['user_ids']) {
+    if(!user_ids) {
       return setResInfo(res, false, 'params error');
     }
 
     // 从 db 查询数据，并获取，有可能返回空数据
-    const userInfo = await queryData({'id' : { $in : param['user_ids'].split(',')}});
+    const userInfo = await queryData({'id' : { $in : user_ids.split(',')}});
     return setResInfo(res, true, 'success', userInfo);
 });
 

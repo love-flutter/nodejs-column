@@ -1,6 +1,5 @@
 const http = require('http');
-const url = require('url');
-const querystring = require('querystring');
+const URL = require('url').URL;
 
 const baseFun = require('./util/baseFun');
 
@@ -24,7 +23,8 @@ const routerMapping = {
  */
 const server = http.createServer(async (req, res) => {
     // 获取 get 参数
-    const pathname = url.parse(req.url).pathname;
+    const myUrl = new URL(req.url, `http://${req.headers.host}`); 
+    const pathname = myUrl.pathname;
     
     // 过滤非拉取用户信息请求
     if(!routerMapping[pathname]) {
