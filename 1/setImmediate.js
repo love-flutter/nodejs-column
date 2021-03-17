@@ -8,7 +8,7 @@ setImmediate( () => {
     console.log('setImmediate 1');
 });
 
-/// 将会在新的事件循环中的 pending callbacks 阶段执行
+/// 将会在 poll 阶段执行
 fs.readFile('./config/test.conf', {encoding: 'utf-8'}, (err, data) => {
     if (err) throw err;
     console.log('read file success');
