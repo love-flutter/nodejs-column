@@ -112,9 +112,10 @@ class CpuOverload {
             pidInfo = await this._getWmic();
         } else { // 其他平台 linux & mac
             pidInfo = await this._getPs();
-            cpuInfo = await this._parseInOs(pidInfo);
         }
     
+        cpuInfo = await this._parseInOs(pidInfo);
+        
         if(!cpuInfo || cpuInfo == '') { // 异常处理
             return false;
         }

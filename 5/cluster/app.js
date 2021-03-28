@@ -7,7 +7,6 @@ const server = http.createServer((req, res) => {
     res.write(`hello world, start with cluster ${process.pid}`);
     res.end();
 });
-
 /**
  * 
  * 启动服务

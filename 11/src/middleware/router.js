@@ -67,6 +67,10 @@ const routerMapping = {
         'controller' : 'error',
         'method' : 'singletonTest'
     },
+    '/v1/mem-leak' : {
+        'controller' : 'memLeak',
+        'method' : 'login'
+    },
 };
 
 module.exports = function () {
@@ -75,7 +79,7 @@ module.exports = function () {
         const myUrl = new URL(ctx.request.url, `http://${ctx.request.headers.host}`); 
         let pathname = myUrl.pathname;
         
-        // 去除非常请求路径
+        // 去除非常规请求路径
         pathname = pathname.replace('..', '');
 
         // 过滤非拉取用户信息请求
