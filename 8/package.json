@@ -11,6 +11,7 @@
   "dependencies": {
     "koa": "^2.13.1",
     "redis": "^3.0.2",
+    "node-cache": "^5.1.2",
     "util": "^0.12.3"
   }
 }
