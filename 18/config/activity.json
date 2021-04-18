@@ -1,0 +1,81 @@
+[
+    {
+        "activity_info" : {
+            "aid" : "1001",
+            "name" : "电影票免费观看活动",
+            "desc" : "本周日，免费观看电影活动，自行前往可以携带家属",
+            "days" : 5
+        },
+        "ticket_info" : {
+            "name" : "哥斯拉 2 ",
+            "desc" : "请遵守现场安排",
+            "days" : 10
+        },
+        "code_list" : [
+            "SOU09PO1234NJ98N",
+            "POIQUNHY985IOJDA",
+            "TRE123MIY09YK123",
+            "MKL12830UINJG23M",
+            "LBVCG28WUH0SJ2UK",
+            "CCAP13847SJNDGECD",
+            "YTE82B62K82P03K34"
+        ]
+    },
+    {
+        "activity_info" : {
+            "aid" : "1002",
+            "name" : "大梅沙2日游",
+            "desc" : "可选择随意时间，前往大梅沙2日游，1晚五星级酒店",
+            "days" : 5
+        },
+        "ticket_info" : {
+            "name" : "大梅沙豪华酒店+大梅沙豪华早午晚餐",
+            "desc" : "包括酒店、早餐、午餐和晚餐券",
+            "days" : 10
+        },
+        "code_list" : [
+            "SOU09PO1234NJ98N",
+            "POIQUNHY985IOJDA",
+            "TRE123MIY09YK123",
+            "MKL12830UINJG23M",
+            "LBVCG28WUH0SJ2UK",
+            "CCAP13847SJNDGECD",
+            "YTE82B62K82P03K34"
+        ]
+    },
+    {
+        "activity_info" : {
+            "aid" : "1003",
+            "name" : "压测使用活动",
+            "desc" : "压测使用活动",
+            "days" : 5
+        },
+        "ticket_info" : {
+            "name" : "压测活动券",
+            "desc" : "压测活动券",
+            "days" : 10
+        },
+        "code_list" : [
+            "SOI09PO1234NJ98N",
+            "POPQUNHY985IOJDA",
+            "TRC123MIY09YK123",
+            "MKW12830UINJG23M",
+            "LBACG28WUH0SJ2UK",
+            "CCAC13847SJNDGECD",
+            "YTE32B62K82P03K34",
+            "DASDOEU2994JDSADP",
+            "DOEWIOHREBFSAKDNAS",
+            "PDWEOJEEWJWKEFFEWJ1",
+            "OWEPKEJORENGR235IJF",
+            "PEKWNDBEF03JNNSDKJE",
+            "DEOJFEKNFHRENFDSFS2",
+            "SDKIJFJEPPFKRE355",
+            "PKDWOOEJWFNDSNNDS",
+            "EOIRHNFKNFIWJEIFJEW",
+            "OWEIOJRENF394858DS",
+            "DOEWKREFONDFJSID3",
+            "PWNDUEFN35FMK5QMKDS"
+        ]
+    }
+
+]
