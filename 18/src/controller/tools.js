@@ -51,6 +51,10 @@ class Tools extends Controller {
         return this.resApi(true, 'mongodb and redis connect success');
     }
 
+    /**
+     * 
+     * @description 从项目根目录的 config/activity.json 中读取配置，并落入数据库
+     */
     async init() {
         let activityInfos = [];
         try {
@@ -60,6 +64,7 @@ class Tools extends Controller {
             return this.resApi(false, 'failed');
         }
         
+        /// 加载相应的 Model 和 Service
         let allRet = true;
         const actModel = load.loadModel(this.ctx, 'act');
         const ticketModel = load.loadModel(this.ctx, 'ticket');
@@ -67,7 +72,7 @@ class Tools extends Controller {
         const codeService = load.loadService(this.ctx, 'code');
         const actService = load.loadService(this.ctx, 'act');
 
-        for(const activityInfo of activityInfos){
+        for(const activityInfo of activityInfos){ // 循环处理导入
             let actInfo = activityInfo['activity_info'];
 
             const preRowInfo = await actModel.getOneByAid(actInfo['aid']);
@@ -80,12 +85,14 @@ class Tools extends Controller {
 
             delete actInfo['days'];
 
+            /// 插入活动信息
             let actId = await actModel.insertOne(actInfo);
             if(!actId){
                 this.log('error', 'import act error', actInfo);
                 continue;
             }
 
+            /// 插入票信息
             let ticketInfo = activityInfo['ticket_info'];
             ticketInfo['act_id'] = actId;
             ticketInfo['start_time'] = moment().unix();
@@ -96,10 +103,12 @@ class Tools extends Controller {
                 continue;
             }
 
+            /// 导入券码列表
             const ret = await codeService.import(actId, ticketId, activityInfo['code_list']);
             allRet = allRet && ret;
         }
 
+        // 设置缓存
         await actService.cacheList();
 
         if(allRet) {

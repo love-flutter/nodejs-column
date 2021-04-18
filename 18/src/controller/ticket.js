@@ -3,11 +3,18 @@ const load = require('../core/load');
 
 class Ticket extends Controller {
 
+    /**
+     * 
+     * @description 抢票核心代码实现
+     * @params {string} actId 具体的活动 id
+     */
     async get() {
         let actId = this.getParams('actId');
         if(!actId) {
             return this.resApi(false, 'params error');
         } 
+
+        /// 校验是否参加过，以及参数是否正确
         const actService = load.loadService(this.ctx, 'act');
         const checkRet = await actService.checkCanJoin(actId);
         if(checkRet == -1){
@@ -16,6 +23,8 @@ class Ticket extends Controller {
         if(checkRet !== 0){
             return this.resApi(false, 'you have already join', {'errCode':1001, checkRet});
         }
+
+        /// 抢票核心流程
         const codeService = load.loadService(this.ctx, 'code');
         const ticketCode = await codeService.getOneCode(actId);
         if(ticketCode == 1){
@@ -25,6 +34,7 @@ class Ticket extends Controller {
             return this.resApi(false, 'server error, pls retry later', {'errCode':3001});
         }
 
+        /// 获取票相关通用信息
         let ticketInfo = {};
         const ticketId = await codeService.getTicketIdByCode(ticketCode);
         if(!ticketId){
@@ -46,6 +56,10 @@ class Ticket extends Controller {
         });
     }
 
+    /**
+     * 
+     * @description 票详情数据
+     */
     async detail() {
         let ticketCode = this.getParams('code');
         if(!ticketCode) {
@@ -59,6 +73,10 @@ class Ticket extends Controller {
         return this.resApi(true, 'success', ticketInfo);
     }
 
+    /**
+     * 
+     * @description 查看用户所获得过的票列表
+     */
     async list() {
         let page = parseInt(this.getParams('page'));
         if(!page || page < 0) {
@@ -72,6 +90,10 @@ class Ticket extends Controller {
         return this.resApi(true, 'success', ticketList);
     }
 
+    /**
+     * 
+     * @description 手动导入活动相关的票信息
+     */
     async importCode() {
         let actId = this.getParams('actId');
         let codeStr = this.getParams('codeList');

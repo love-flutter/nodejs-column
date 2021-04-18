@@ -64,7 +64,7 @@ class ActService extends Service {
         if(cacheSize < 0){
             return allResult;
         }
-        for(let i=0; i<cacheSize; i++){
+        for(let i=0; i<cacheSize; i++){ // 分页获取数据并缓存，由于是离线服务，可以不需要考虑性能问题
             let actList = await actModel.getOnlinList(i);
             if(!actList || actList.length < 1){
                 return allResult; 
