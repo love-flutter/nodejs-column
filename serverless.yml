@@ -1,10 +1,10 @@
 component: koa
-name: KOA-Nodejs
-app: KOA-Nodejs
+name: koa-tst
+app: koa-tst
 
 inputs:
   entryFile: app.js #以您实际入口文件名为准
-  src: ./src
+  src: ./19
   region: ap-guangzhou
   runtime: Nodejs10.15
   apigatewayConf:
