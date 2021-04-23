@@ -4,8 +4,7 @@ app: KOA-Nodejs
 
 inputs:
   entryFile: app.js #以您实际入口文件名为准
-  src:
-    src: ./src
+  src: ./src
   region: ap-guangzhou
   runtime: Nodejs10.15
   apigatewayConf:
