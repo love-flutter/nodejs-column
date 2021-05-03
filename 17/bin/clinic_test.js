@@ -60,7 +60,7 @@ async function startTestLink() {
         url = `${url} -s ./bin/${tmpFile}`;
     }
     let command = testCommand.replace('{test_link}', url);
-    let resultLink = execSync(`cd ..;${command};exit;`, {encoding: 'utf8'});
+    let resultLink = execSync(`cd ..;${command};exit;`, {encoding: 'utf8'}, { stdio: 'ignore' });
     resultLink = resultLink.match(/nodejs-column\/14\/\.clinic\/(\S*)/)[1];
     resultLink = resultLink.trim();
 
