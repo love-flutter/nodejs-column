@@ -1,5 +1,7 @@
 const http = require('http');
 const URL = require('url').URL;
+const querystring = require('querystring');
+const baseMongo = require('./lib/baseMongodb')
   
 /**
  * 
@@ -41,7 +43,7 @@ server.listen(5000, () => {
  * @param object queryOption 
  */
 async function queryData(queryOption) {
-  const client = await baseMongo.getClient();
+  const client = await baseMongo().getClient();
   const collection = client.db("nodejs_cloumn").collection("user");
   const queryArr = await collection.find(queryOption).toArray();
 
